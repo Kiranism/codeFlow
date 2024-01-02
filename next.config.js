@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["encrypted-tbn0.gstatic.com", "localhost"],
+    domains: ["codeflowsnippet.vercel.app"],
   },
   webpack: (config, { webpack, isServer, nextRuntime }) => {
     // Workaround for the following issue:
