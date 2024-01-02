@@ -1,4 +1,7 @@
 // Importing create function from the Zustand library
+import { fontFamilyOptions } from "@/constants/data";
+import { themeOptions } from "@/constants/themes";
+import { codeWallOptions } from "@/constants/walls";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
@@ -28,19 +31,44 @@ type TCodeCanvas = {
   codeLang: string;
 };
 
+const initialValues: Partial<TCodeCanvas> = {
+  activeSnippetId: "",
+  codeLang: "",
+  codeSnippet: [
+    {
+      id: Date.now().toString(),
+      code: "console.log",
+      language: "js",
+      editable: false,
+    },
+  ] as TCodesnippet[],
+  codeTheme: "",
+  codeWallpaper: "",
+  fontFamily: "",
+  fontSize: 18,
+  isEditMode: false,
+};
+
 // create our store
 export const useCodeCanvasStore = create<TCodeCanvas>()(
   persist(
     (set) => ({
-      fontFamily: "",
+      fontFamily: fontFamilyOptions[0].value,
       setFontFamily: (fontFamily: string) => set({ fontFamily }),
       fontSize: 18,
       setFontSize: (fontSize: number) => set({ fontSize }),
-      codeTheme: "",
+      codeTheme: themeOptions[0].value,
       setCodeTheme: (codeTheme: string) => set({ codeTheme }),
-      codeWallpaper: "",
+      codeWallpaper: codeWallOptions[0].value,
       setCodeWallpaper: (codeWallpaper: string) => set({ codeWallpaper }),
-      codeSnippet: [],
+      codeSnippet: [
+        {
+          id: Date.now().toString(),
+          code: "console.log",
+          language: "js",
+          editable: false,
+        },
+      ],
       setCodeSnippet: (codeSnippet: TCodesnippet[]) => set({ codeSnippet }),
       isEditMode: false,
       setIsEditMode: (val) => set({ isEditMode: val }),
@@ -48,6 +76,9 @@ export const useCodeCanvasStore = create<TCodeCanvas>()(
       setActiveSnippetId: (id) => set({ activeSnippetId: id }),
       setCodeLang: (codeLang: string) => set({ codeLang }),
       codeLang: "",
+      reset: () => {
+        set(initialValues);
+      },
     }),
     { name: "code-store", skipHydration: true }
   )

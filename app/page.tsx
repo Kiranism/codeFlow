@@ -1,14 +1,17 @@
 "use client";
+import Banner from "@/components/landing/Banner";
+import Features from "@/components/landing/Features";
+import Hero from "@/components/landing/Hero";
+import Navbar from "@/components/landing/Navbar";
+import React from "react";
 
-import { NextPage } from "next";
-import MainSection from "../components/MainSection";
-
-const Home: NextPage = () => {
+export default function page() {
   return (
     <>
-      <MainSection />
+      <Navbar />
+      <Hero />
+      <Features />
+      <Banner />
     </>
   );
-};
-
-export default Home;
+}

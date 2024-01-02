@@ -1,5 +1,5 @@
 "use client";
-import { useCodeCanvasStore } from "@/hooks/useCodeCanvas";
+import { TCodesnippet, useCodeCanvasStore } from "@/hooks/useCodeCanvas";
 import { Player } from "@remotion/player";
 import React, { useEffect, useMemo } from "react";
 import { z } from "zod";
@@ -27,8 +27,8 @@ const player: React.CSSProperties = {
 type TRemotionPlayerProps = {
   autoPlay: boolean;
   controls: boolean;
-  mode: "timeline" | "canvas";
-  title?: string;
+  mode: "timeline" | "canvas" | "landing";
+  title?: TCodesnippet[];
 };
 
 export default function RemotioPlayer({
@@ -37,7 +37,6 @@ export default function RemotioPlayer({
   mode,
   title,
 }: TRemotionPlayerProps) {
-  // const [text, setText] = useState<string>(title);
   const { codeSnippet } = useCodeCanvasStore();
   useEffect(() => {
     useCodeCanvasStore.persist.rehydrate();
@@ -49,7 +48,12 @@ export default function RemotioPlayer({
     };
   }, [title, mode, codeSnippet]);
 
-  const codeSnipLength = codeSnippet?.length === 0 ? 1 : codeSnippet?.length;
+  const codeSnipLength =
+    mode === "landing"
+      ? title?.length || 0
+      : codeSnippet?.length === 0
+      ? 1
+      : codeSnippet?.length;
   return (
     <div className="cinematics" style={outer}>
       <Player

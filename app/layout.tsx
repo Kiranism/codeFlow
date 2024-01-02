@@ -1,8 +1,7 @@
 import ThemeProvider from "@/components/ThemeToggle/theme-provider";
+import { Metadata } from "next";
 import "../styles/global.css";
 import "./globals.css";
-import { Metadata } from "next";
-import Header from "@/components/Header";
 import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
@@ -22,7 +21,6 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ThemeProvider>
-          <Header />
           {children}
           <Toaster />
         </ThemeProvider>
