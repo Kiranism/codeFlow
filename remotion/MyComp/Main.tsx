@@ -20,7 +20,7 @@ export const Main = ({ data }: z.infer<typeof CompositionProps>) => {
   const isCodeSnippets = !!codeSnippet.length;
 
   return (
-    <AbsoluteFill>
+  <AbsoluteFill>
       {isCodeSnippets ? (
         grad ? (
           <AbsoluteFill style={{ background: codeWallpaper }} />

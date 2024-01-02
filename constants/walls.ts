@@ -1,6 +1,6 @@
 export const codeWallOptions = [
-  { value: "/WallOne.jpg", label: "Choose Wallpaper" },
-  { value: "/WallTwo.jpg", label: "Choose Wallpaper" },
+  { value: "WallOne.jpg", label: "Choose Wallpaper" },
+  { value: "WallTwo.jpg", label: "Choose Wallpaper" },
 ];
 
 export const gradientOptions = [
