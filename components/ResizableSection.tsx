@@ -11,9 +11,14 @@ export default function ResizableSec() {
   return (
     <ResizablePanelGroup
       direction="horizontal"
-      className="min-h-[200px]  border"
+      className="min-h-[calc(60vh)]  border"
     >
-      <ResizablePanel defaultSize={41} minSize={30} className="w-[500px]">
+      <ResizablePanel
+        defaultSize={41}
+        minSize={30}
+        maxSize={60}
+        className="w-[500px]"
+      >
         <div>
           <Code />
         </div>
