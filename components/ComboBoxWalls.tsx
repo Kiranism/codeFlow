@@ -34,7 +34,11 @@ export function ComboBoxWalls({ value, setValue }: TComboBoxProps) {
             <div className={cn("w-6 h-6 rounded-full", value)} />
           ) : (
             <Image
-              src={!!value.length ? value : "/bg-placeholder.png"}
+              src={
+                !!value.length
+                  ? `${process.env.NEXT_PUBLIC_VERCEL_URL}/${value}`
+                  : `${process.env.NEXT_PUBLIC_VERCEL_URL}/bg-placeholder.png`
+              }
               width={30}
               height={30}
               alt="Selected wallpaper"

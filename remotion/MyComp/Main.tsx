@@ -26,11 +26,19 @@ export const Main = ({ data }: z.infer<typeof CompositionProps>) => {
           <AbsoluteFill style={{ background: codeWallpaper }} />
         ) : (
           codeWallpaper && (
-            <Image src={codeWallpaper as string} fill alt="codebg" />
+            <Image
+              src={`${process.env.NEXT_PUBLIC_VERCEL_URL}/${codeWallpaper}`}
+              fill
+              alt="codebg"
+            />
           )
         )
       ) : (
-        <Image src={"/bg-placeholder.png"} fill alt="codebg" />
+        <Image
+          src={`${process.env.NEXT_PUBLIC_VERCEL_URL}/bg-placeholder.png`}
+          fill
+          alt="codebg"
+        />
       )}
 
       <TransitionSeries>
