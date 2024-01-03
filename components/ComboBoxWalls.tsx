@@ -39,6 +39,7 @@ export function ComboBoxWalls({ value, setValue }: TComboBoxProps) {
                   ? `${process.env.NEXT_PUBLIC_VERCEL_URL}/${value}`
                   : `${process.env.NEXT_PUBLIC_VERCEL_URL}/bg-placeholder.png`
               }
+              unoptimized
               width={30}
               height={30}
               alt="Selected wallpaper"
