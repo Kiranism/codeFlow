@@ -91,16 +91,21 @@ const Hero = () => {
               mode="landing"
               title={[
                 {
-                  code: `
-  function generateMessage(name, age) {
-                    return Hello, name! You are age years old.;
+                  code: `const arr = [100,10,3,4,20,50];
+
+                  function largestNoFromArr(arr){
+                    let res = arr[0];
+                    for(let i=0; i <arr.length; i++){
+                     let curr = arr[i];
+                     if(curr > res){
+                     res = curr
+                     }
+                    }
+                    return res;
                   }
                   
-                  // Example usage
-                  const message = generateMessage("John", 25);
-                  console.log(message);
-                  
-                  `,
+                  const op = largestNoFromArr(arr);
+                  console.log(op)`,
                   id: "1",
                   language: "js",
                   editable: false,
@@ -118,17 +123,7 @@ const Hero = () => {
                   
                     // filter array based on active status
                     const filterd_users = users.filter( user => user.status === 'active' );
-                  
-                    return (
-                      <div>
-                        <h3>Active Users</h3>
-                        <ul>
-                          {filterd_users.map(user =>
-                            <li key={user.id}>{user.name}</li>
-                          )}
-                        </ul>
-                      </div>
-                    );
+                
                   }`,
                   id: "1",
                   language: "js",

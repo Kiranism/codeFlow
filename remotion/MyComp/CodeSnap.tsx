@@ -6,15 +6,15 @@ import React, { useEffect, useMemo } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 
 export const CodeSnap: React.FC<{ title: string }> = ({ title }) => {
-  const { fontSize, fontFamily, codeTheme } = useCodeCanvasStore();
+  const { fontSize, fontFamily, codeTheme, innerPadding, outerPadding } =
+    useCodeCanvasStore();
   useEffect(() => {
     useCodeCanvasStore.persist.rehydrate();
   }, []);
 
   const titleStyle: React.CSSProperties = useMemo(() => {
-    return { fontFamily, fontSize };
-  }, [fontSize, fontFamily]);
-  console.log("activeTheme1", codeTheme);
+    return { fontFamily, fontSize, padding: innerPadding[0] * 2 };
+  }, [fontSize, fontFamily, innerPadding]);
 
   const activeThemeFind =
     themeOptions?.find(
@@ -22,12 +22,13 @@ export const CodeSnap: React.FC<{ title: string }> = ({ title }) => {
     ) || themeOptions[0];
   const activeTheme = activeThemeFind.theme;
 
-  console.log("activeTheme", codeTheme, activeThemeFind);
-
   const themeBackgroundColor = activeTheme.hljs.background;
   // theme={tokyoNightInit({ settings: { fontFamily } })}
   return (
-    <div className="w-full m-20 flex flex-col  text-white rounded-xl overflow-hidden shadow-xl">
+    <div
+      style={{ margin: outerPadding[0] * 2 }}
+      className="w-full flex flex-col rounded-xl  text-white overflow-hidden shadow-xl"
+    >
       <header
         style={{
           backgroundColor: String(themeBackgroundColor),
@@ -46,8 +47,8 @@ export const CodeSnap: React.FC<{ title: string }> = ({ title }) => {
       <SyntaxHighlighter
         language="javascript"
         style={activeTheme}
-        codeTagProps={{ style: titleStyle }}
-        customStyle={{ height: "600px" }}
+        codeTagProps={{ style: { fontFamily: titleStyle.fontFamily } }}
+        customStyle={{ height: "100%", ...titleStyle }}
       >
         {title}
       </SyntaxHighlighter>

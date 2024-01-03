@@ -41,7 +41,7 @@ export default function RemotioPlayer({
   useEffect(() => {
     useCodeCanvasStore.persist.rehydrate();
   }, []);
-  console.log("codeSnippet", codeSnippet);
+
   const inputProps: z.infer<typeof CompositionProps> = useMemo(() => {
     return {
       data: mode === "canvas" ? codeSnippet || "" : title || "",

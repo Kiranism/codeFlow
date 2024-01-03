@@ -3,6 +3,7 @@ import CodeCanvasFontTool from "./CodeCanvasTools/CodeCanvasFontTool";
 import CodeCanvasFontSizeTool from "./CodeCanvasTools/CodeCanvasFontSizeTool";
 import CodeCanvasThemeTool from "./CodeCanvasTools/CodeCanvasThemeTool";
 import CodeCanvasWallpaperTool from "./CodeCanvasTools/CodeCanvasWallpaperTool";
+import CodeCanvasSettings from "./CodeCanvasSettings";
 
 export default function CodeCanvasToolBox() {
   return (
@@ -11,6 +12,7 @@ export default function CodeCanvasToolBox() {
       <CodeCanvasFontSizeTool />
       <CodeCanvasThemeTool />
       <CodeCanvasWallpaperTool />
+      <CodeCanvasSettings />
     </div>
   );
 }

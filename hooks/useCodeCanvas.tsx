@@ -29,6 +29,10 @@ type TCodeCanvas = {
   setActiveSnippetId: (val: string | null) => void;
   setCodeLang: (val: string) => void;
   codeLang: string;
+  innerPadding: number[];
+  outerPadding: number[];
+  setInnerPadding: (val: number[]) => void;
+  setOuterPadding: (val: number[]) => void;
 };
 
 const initialValues: Partial<TCodeCanvas> = {
@@ -76,6 +80,11 @@ export const useCodeCanvasStore = create<TCodeCanvas>()(
       setActiveSnippetId: (id) => set({ activeSnippetId: id }),
       setCodeLang: (codeLang: string) => set({ codeLang }),
       codeLang: "",
+      outerPadding: [40],
+      setOuterPadding: (outerPadding: number[]) => set({ outerPadding }),
+      innerPadding: [10],
+      setInnerPadding: (innerPadding: number[]) => set({ innerPadding }),
+
       reset: () => {
         set(initialValues);
       },

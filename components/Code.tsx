@@ -1,6 +1,6 @@
 import { useCodeCanvasStore } from "@/hooks/useCodeCanvas";
 import { langOptions } from "@/constants/lang";
-import { andromeda } from "@uiw/codemirror-theme-andromeda";
+import { vscodeDark } from "@uiw/codemirror-theme-vscode";
 import CodeMirror from "@uiw/react-codemirror";
 import React from "react";
 import { toast } from "sonner";
@@ -14,7 +14,6 @@ function Code() {
     useCodeCanvasStore();
 
   const onChange = React.useCallback((val: string) => {
-    console.log("val:", val);
     setValue(val);
   }, []);
   const handleAddCodeSnap = () => {
@@ -50,11 +49,11 @@ function Code() {
 
   return (
     <div className="relative">
-      <CodeToolBox isEditMode={isEditMode} />
+      <CodeToolBox isEditMode={isEditMode} onChange={onChange} />
 
       <CodeMirror
         value={displayValue}
-        theme={andromeda}
+        theme={vscodeDark}
         height="500px"
         extensions={activeLang}
         onChange={onChange}
@@ -70,8 +69,8 @@ function Code() {
             Save edits
           </Button>
         ) : (
-          <Button size={"xs"} onClick={handleAddCodeSnap}>
-            Add to timeline
+          <Button size={"xs"} variant={"secondary"} onClick={handleAddCodeSnap}>
+            <Icons.timeline className="h-4 w-4" /> Add to timeline
           </Button>
         )}
       </div>

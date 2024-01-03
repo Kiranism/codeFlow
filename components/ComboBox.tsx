@@ -37,8 +37,6 @@ export function ComboBox({
     (option) => option.value.toUpperCase() === value.toUpperCase()
   )?.label;
 
-  console.log("hello", value, options, selectedOptionLabel);
-
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -78,7 +76,6 @@ export function ComboBox({
                 key={option.value}
                 value={option.value}
                 onSelect={(currentValue) => {
-                  console.log("current", currentValue, value);
                   setValue(
                     currentValue?.toUpperCase() === value.toUpperCase()
                       ? ""

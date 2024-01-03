@@ -39,7 +39,6 @@ export function ComboBoxWalls({ value, setValue }: TComboBoxProps) {
                   ? `${process.env.NEXT_PUBLIC_VERCEL_URL}/${value}`
                   : `${process.env.NEXT_PUBLIC_VERCEL_URL}/bg-placeholder.png`
               }
-              unoptimized
               width={30}
               height={30}
               alt="Selected wallpaper"
@@ -67,7 +66,7 @@ export function ComboBoxWalls({ value, setValue }: TComboBoxProps) {
             <div className="grid grid-cols-6 gap-2 cursor-pointer">
               {codeWallOptions.map((option) => (
                 <Image
-                  src={option.value}
+                  src={`/${option.value}`}
                   key={option.value}
                   alt="wallpaper"
                   height={50}
